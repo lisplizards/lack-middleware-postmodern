@@ -87,7 +87,7 @@
                                              :timeout 0
                                              :max-idle-count 3)))))
                  (flet ((make-thread ()
-                          (bt:make-thread
+                          (bt2:make-thread
                            (lambda ()
                              (let ((response (funcall app ())))
                                (when (= 503 (first response))
@@ -99,7 +99,7 @@
                                         (make-thread)
                                         (make-thread))))
                      (dolist (thread threads)
-                       (bt:join-thread thread))
+                       (bt2:join-thread thread))
                      (ok (= 3 failure-count))))))))
 
   (testing "does NOT return 503 response when the pool is exhausted but pool has availability within timeout limit"
@@ -127,7 +127,7 @@
                                              :timeout 10000
                                              :max-idle-count 3)))))
                  (flet ((make-thread ()
-                          (bt:make-thread
+                          (bt2:make-thread
                            (lambda ()
                              (let ((response (funcall app ())))
                                (when (= 503 (first response))
@@ -139,7 +139,7 @@
                                         (make-thread)
                                         (make-thread))))
                      (dolist (thread threads)
-                       (bt:join-thread thread))
+                       (bt2:join-thread thread))
                      (ok (= 0 failure-count))))))))
 
   (testing "create database, run query, drop database, from two separate pools, with nesting"

@@ -2,7 +2,7 @@
 ;; SPDX-License-Identifier: Apache-2.0
 
 (defsystem "foo.lisp.lack-middleware-postmodern"
-  :version "1.0.1"
+  :version "1.0.2"
   :author "John Newton"
   :license "Apache-2.0"
   :homepage "https://github.com/lisplizards/lack-middleware-postmodern"
